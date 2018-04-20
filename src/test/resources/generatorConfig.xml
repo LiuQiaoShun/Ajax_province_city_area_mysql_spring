@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="testTables" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+
+        <!-- 瀵拷閸氼垱鏁幐浣稿敶鐎涙ê鍨庢い锟� 閸欘垳鏁撻幋锟� 閺�顖涘瘮閸愬懎鐡ㄩ崚鍡楃閻ㄥ嫭鏌熷▔鏇炲挤閸欏倹鏆� <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin" /> -->
+        <!-- generate entity閺冭绱濋悽鐔稿灇hashcode閸滃當quals閺傝纭� <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" /> -->
+        <!-- 濮濄倕顦╅弰顖氱殺Example閺�鐟版倳娑撶瘖riteria 瑜版挾鍔� 閹櫕鏁奸幋鎰矆娑斿牓鍏樼悰瀵� -->
+        <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+            <property name="searchString" value="Example$" />
+            <!-- 閺囨寧宕查崥锟� <property name="replaceString" value="Criteria" /> -->
+            <property name="replaceString" value="Criteria" />
+        </plugin>
+
+
+        <!--閺佺増宓佹惔鎾圭箾閹恒儳娈戞穱鈩冧紖閿涙岸鈹嶉崝銊ц閵嗕浇绻涢幒銉ユ勾閸э拷閵嗕胶鏁ら幋宄版倳閵嗕礁鐦戦惍锟� -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/login" userId="root" password="root">
+        </jdbcConnection>
+        <!-- <jdbcConnection driverClass="oracle.jdbc.OracleDriver" connectionURL="jdbc:oracle:thin:@127.0.0.1:1521:aaaa"
+            userId="aaaa" password="aaaa"> </jdbcConnection> -->
+
+        <!-- 姒涙顓籪alse閿涘本濡窲DBC DECIMAL 閸滐拷 NUMERIC 缁鐎风憴锝嗙�芥稉锟� Integer閿涘奔璐� true閺冭埖濡窲DBC DECIMAL
+            閸滐拷 NUMERIC 缁鐎风憴锝嗙�芥稉绨�ava.math.BigDecimal -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+
+        <!-- targetProject:閻㈢喐鍨歅O缁崵娈戞担宥囩枂 -->
+        <javaModelGenerator targetPackage="online.qsx.model" targetProject=".\src\main\java">
+            <!-- enableSubPackages:閺勵垰鎯佺拋锕昪hema娴ｆ粈璐熼崠鍛畱閸氬海绱� -->
+            <property name="enableSubPackages" value="false" />
+            <!-- 娴犲孩鏆熼幑顔肩氨鏉╂柨娲栭惃鍕拷鑹邦潶濞撳懐鎮婇崜宥呮倵閻ㄥ嫮鈹栭弽锟� -->
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <!-- targetProject:mapper閺勭姴鐨犻弬鍥︽閻㈢喐鍨氶惃鍕秴缂冿拷 -->
+        <sqlMapGenerator targetPackage="online.qsx.mapper" targetProject=".\src\main\java">
+            <!-- enableSubPackages:閺勵垰鎯佺拋锕昪hema娴ｆ粈璐熼崠鍛畱閸氬海绱� -->
+            <property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+        <!-- targetPackage閿涙apper閹恒儱褰涢悽鐔稿灇閻ㄥ嫪缍呯純锟� -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="online.qsx.mapper" targetProject=".\src\main\java">
+            <!-- enableSubPackages:閺勵垰鎯佺拋锕昪hema娴ｆ粈璐熼崠鍛畱閸氬海绱� -->
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <!---閺勫海鈥橀崫顏冪昂鐞涖劎鏁撻幋鎰嚠鎼存梻娈戝Ο鈥虫健-->
+        <table schema="" tableName="bs_province" domainObjectName="Province"/>
+        <table schema="" tableName="bs_city" domainObjectName="City"/>
+        <table schema="" tableName="bs_area" domainObjectName="Area"/>
+
+    </context>
+</generatorConfiguration>
